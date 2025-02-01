@@ -1,0 +1,47 @@
+<div class="sidenav" id="sidenav">
+    <div class="sidenav-header">
+        <!-- Font Awesome icon for the menu button -->
+        <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+        <h1>CarexusFlow</h1>
+    </div>
+    <ul class="sidenav-menu">
+        <li class="sidenav-item">
+            <button (click)="navigateTo('userappointments')" class="sidenav-link">
+                <i class="fas fa-calendar-check"></i> Appointments
+            </button>
+        </li>
+        <li class="sidenav-item">
+            <button (click)="navigateTo('userprofile')" class="sidenav-link">
+                <i class="fas fa-user"></i> User Profile
+            </button>
+        </li>
+        <li class="sidenav-item logout">
+            <button (click)="showLogoutModal()" class="sidenav-link">
+                <i class="fas fa-sign-out-alt"></i> Logout?
+            </button>
+        </li>
+    </ul>
+</div>
+
+<!-- Logout confirmation modal -->
+<div class="modal" *ngIf="isLogoutModalVisible">
+    <div class="modal-content">
+        <h3>Confirm Logout</h3>
+        <p>Are you sure you want to logout?</p>
+        <button class="confirm-btn" (click)="logout()">Yes</button>
+        <button class="cancel-btn" (click)="hideLogoutModal()">Cancel</button>
+    </div>
+  </div>
+  
+
+<!-- Logout confirmation modal -->
+<div class="modal" *ngIf="isLogoutModalVisible">
+    <div class="modal-content">
+      <h3>Confirm Logout</h3>
+      <p>Are you sure you want to logout?</p>
+      <!-- Use the newly defined confirmLogout and cancelLogout methods -->
+      <button class="confirm-btn" (click)="confirmLogout()">Yes</button>
+      <button class="cancel-btn" (click)="cancelLogout()">No</button>
+    </div>
+  </div>
+  

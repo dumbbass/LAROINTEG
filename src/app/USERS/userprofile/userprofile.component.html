@@ -1,0 +1,262 @@
+<div class="userbilling-container">
+  <app-sidenav></app-sidenav>
+  <div class="main-content">
+      <div class="userbilling-header-container">
+          <div class="header">
+              <div class="logo">
+                  <i class="fas fa-user"></i> User Profile
+              </div>
+          </div>
+      </div>
+      <!-- Patient History Section -->
+      <div class="patient-history-container">
+        <h2>Patient History</h2>
+        <div class="history-content" [ngClass]="{'editing': isEditingHistory}">
+            <div *ngIf="!isEditingHistory">
+                <!-- Patient History Table -->
+                <table class="history-table">
+                    <tr>
+                        <td><strong>Medical History:</strong></td>
+                        <td>{{patientHistory.medical_history}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Surgical History:</strong></td>
+                        <td>{{patientHistory.surgical_history}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medications:</strong></td>
+                        <td>{{patientHistory.medications}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Allergies:</strong></td>
+                        <td>{{patientHistory.allergies}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Injuries and Accidents:</strong></td>
+                        <td>{{patientHistory.injuries_accidents}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Special Needs:</strong></td>
+                        <td>{{patientHistory.special_needs}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blood Transfusion:</strong></td>
+                        <td>{{patientHistory.blood_transfusion}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Present History:</strong></td>
+                        <td>{{patientHistory.present_history}}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- Form for Editing History -->
+            <form *ngIf="isEditingHistory" (ngSubmit)="updatePatientHistory()" #historyForm="ngForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="medical_history">Medical History</label>
+                        <textarea id="medical_history" name="medical_history" [(ngModel)]="patientHistory.medical_history"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="surgical_history">Surgical History</label>
+                        <textarea id="surgical_history" name="surgical_history" [(ngModel)]="patientHistory.surgical_history"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="medications">Medications</label>
+                        <textarea id="medications" name="medications" [(ngModel)]="patientHistory.medications"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="allergies">Allergies</label>
+                        <textarea id="allergies" name="allergies" [(ngModel)]="patientHistory.allergies"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="injuries_accidents">Injuries and Accidents</label>
+                        <textarea id="injuries_accidents" name="injuries_accidents" [(ngModel)]="patientHistory.injuries_accidents"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="special_needs">Special Needs</label>
+                        <textarea id="special_needs" name="special_needs" [(ngModel)]="patientHistory.special_needs"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="blood_transfusion">Blood Transfusion</label>
+                        <select id="blood_transfusion" name="blood_transfusion" [(ngModel)]="patientHistory.blood_transfusion">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="present_history">Present History</label>
+                        <textarea id="present_history" name="present_history" [(ngModel)]="patientHistory.present_history"></textarea>
+                    </div>
+                </div>
+                <button *ngIf="isEditingHistory" (click)="toggleEditHistory()">Cancel</button>
+                <button *ngIf="isEditingHistory" type="submit">Save History</button>
+            </form>
+        </div>
+        
+        <button *ngIf="!isEditingHistory" (click)="toggleEditHistory()">Edit History</button>
+    </div>
+    
+    
+      
+
+      <div class="user-container" *ngIf="user && user.firstname">
+        <h2>Personal Information</h2>
+        <div class="user-info">
+          <div class="info-row">
+            <div>
+              <strong>Name</strong>
+              <p>{{ user.firstname }} {{ user.lastname }}</p>
+            </div>
+            <div>
+              <strong>Gender</strong>
+              <p>{{ user.gender }}</p>
+            </div>
+            <div>
+              <strong>Date of Birth</strong>
+              <p>{{ user.date_of_birth }}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="info-row">
+            <div>
+              <strong>Email Address</strong>
+              <p>{{ user.email }}</p>
+            </div>
+            <div>
+              <strong>Home Address</strong>
+              <p>{{ user.home_address }}</p>
+            </div>
+            <div>
+              <strong>Contact Number</strong>
+              <p>{{ user.contact_number }}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="info-row">
+            <div>
+              <strong>Birthplace</strong>
+              <p>{{ user.birthplace }}</p>
+            </div>
+            <div>
+              <strong>Age</strong>
+              <p>{{ user.age }}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="info-row">
+            <div>
+              <strong>Nationality</strong>
+              <p>{{ user.nationality }}</p>
+            </div>
+            <div>
+              <strong>Religion</strong>
+              <p>{{ user.religion }}</p>
+            </div>
+            <div>
+              <strong>Civil Status</strong>
+              <p>{{ user.civil_status }}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="info-row">
+            <div>
+              <strong>Height</strong>
+              <p>{{ user.height }} cm</p>
+            </div>
+            <div>
+              <strong>Weight</strong>
+              <p>{{ user.weight }} kg</p>
+            </div>
+            <div>
+              <strong>Medications</strong>
+              <p>{{ user.medications }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <!-- Button to open the modal -->
+      <button (click)="openModal()">Edit Profile</button>
+
+      <!-- Modal for updating user profile -->
+      <div id="updateProfileModal" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <h2>Update Profile</h2>
+      
+          <form (ngSubmit)="updateUserProfile()" class="form-container">
+            <!-- Column 1 -->
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input type="text" id="firstname" [(ngModel)]="user.firstname" name="firstname" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input type="text" id="lastname" [(ngModel)]="user.lastname" name="lastname" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" [(ngModel)]="user.email" name="email" required disabled>
+            </div>
+      
+            <!-- Column 2 -->
+            <div class="form-group">
+              <label for="home_address">Home Address</label>
+              <input type="text" id="home_address" [(ngModel)]="user.home_address" name="home_address">
+            </div>
+            <div class="form-group">
+              <label for="date_of_birth">Date of Birth</label>
+              <input type="date" id="date_of_birth" [(ngModel)]="user.date_of_birth" name="date_of_birth" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="contact_number">Contact Number</label>
+              <input type="text" id="contact_number" [(ngModel)]="user.contact_number" name="contact_number">
+            </div>
+      
+            <!-- Column 3 -->
+            <div class="form-group">
+              <label for="nationality">Nationality</label>
+              <input type="text" id="nationality" [(ngModel)]="user.nationality" name="nationality">
+            </div>
+            <div class="form-group">
+              <label for="religion">Religion</label>
+              <input type="text" id="religion" [(ngModel)]="user.religion" name="religion">
+            </div>
+            <div class="form-group">
+              <label for="civil_status">Civil Status</label>
+              <input type="text" id="civil_status" [(ngModel)]="user.civil_status" name="civil_status">
+            </div>
+            
+            <div class="form-group">
+              <label for="height">Height (cm)</label>
+              <input type="number" id="height" [(ngModel)]="user.height" name="height">
+            </div>
+            <div class="form-group">
+              <label for="weight">Weight (kg)</label>
+              <input type="number" id="weight" [(ngModel)]="user.weight" name="weight">
+            </div>
+            <div class="form-group">
+              <label for="medications">Medications</label>
+              <textarea id="medications" [(ngModel)]="user.medications" name="medications"></textarea>
+            </div>
+      
+            <!-- Buttons -->
+            <div class="modal-buttons">
+              <button type="button" class="btn-cancel" (click)="closeModal()">Cancel</button>
+              <button type="submit" class="btn-save">Update Profile</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      

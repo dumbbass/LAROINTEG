@@ -1,0 +1,103 @@
+<!-- Appointments Management Content -->
+<div class="appointments-container">
+    <app-adminsidenav></app-adminsidenav>
+    <div class="main-content">
+        <div class="appointments-header">
+            <h2>Appointments Management</h2>
+        </div>
+
+        <!-- Current Appointments Section -->
+        <div class="appointments-section">
+            <h3>Current Appointments</h3>
+            <div class="appointments-list">
+                <div *ngFor="let appointment of appointments" class="appointment-item">
+                    <p>Patient: {{appointment.patient_name}}</p>
+                    <p>Date: {{appointment.appointment_date}}</p>
+                    <p>Time: {{appointment.appointment_time}}</p>
+                    <p>Purpose: {{appointment.purpose}}</p>
+                    <div class="action-buttons">
+                        <button (click)="approveAppointment(appointment.appointment_id)">Approve</button>
+                        <button (click)="openRemarksModal(appointment.appointment_id)">Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointment History Section -->
+        <div class="appointments-section">
+            <h3>Appointment History</h3>
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of appointmentHistory">
+                        <td>{{appointment.patient_name}}</td>
+                        <td>{{appointment.appointment_date | date}}</td>
+                        <td>{{appointment.appointment_time}}</td>
+                        <td>{{appointment.purpose}}</td>
+                        <td>{{appointment.status}}</td>
+                        <td>{{appointment.remarks || '-'}}</td>
+                    </tr>
+                    <tr *ngIf="appointmentHistory.length === 0">
+                        <td colspan="6" class="empty-state">No appointment history</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modified Appointments Section -->
+        <div class="appointments-section">
+            <h3>Modified Appointments</h3>
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of modifiedAppointments">
+                        <td>{{appointment.patient_name}}</td>
+                        <td>{{appointment.appointment_date | date}}</td>
+                        <td>{{appointment.appointment_time}}</td>
+                        <td>{{appointment.purpose}}</td>
+                        <td>{{appointment.status}}</td>
+                        <td>{{appointment.remarks || '-'}}</td>
+                    </tr>
+                    <tr *ngIf="modifiedAppointments.length === 0">
+                        <td colspan="6" class="empty-state">No modified appointments</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Remarks Modal -->
+<div class="remarks-modal" *ngIf="showRemarksModal">
+    <div class="modal-content">
+        <h3>Decline Appointment</h3>
+        <p>Please provide a reason for declining:</p>
+        <textarea 
+            [(ngModel)]="remarks" 
+            placeholder="Enter your remarks here..."
+            rows="4"
+        ></textarea>
+        <div class="modal-buttons">
+            <button (click)="declineAppointment()" [disabled]="!remarks">Submit</button>
+            <button (click)="closeRemarksModal()">Cancel</button>
+        </div>
+    </div>
+</div>

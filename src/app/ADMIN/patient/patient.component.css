@@ -1,0 +1,369 @@
+.dashboard-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px;
+  padding: 30px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* General styling for the containers */
+.patient-header-container {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 20px;
+}
+
+.patients-list-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 40px 20px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.logo i {
+  margin-right: 30px;
+  font-size: 30px;
+}
+
+.search-container {
+  position: relative;
+  width: 300px;
+}
+
+.search-bar {
+  padding: 8px 30px 8px 30px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Styling for the Patients List table */
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.patients-table th,
+.patients-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.patients-table th {
+  background-color: #f0f0f0;
+}
+
+/* Accept, Decline, View, and Archive buttons */
+.accept-btn,
+.decline-btn,
+.view-btn,
+.archive-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px; /* Adds gap between buttons */
+}
+
+/* Archive button */
+.archive-btn {
+  background-color: #ffc107;
+  color: white;
+}
+
+/* Archive button hover effect */
+.archive-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Accept button */
+.accept-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Decline button */
+.decline-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* View button */
+.view-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Button hover effects */
+.accept-btn:hover {
+  background-color: #218838;
+}
+
+.decline-btn:hover {
+  background-color: #c82333;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal container */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px 30px 0px 30px; /* Reduced top padding */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  width: 480px;
+  max-width: 90%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease-in-out;
+  border-top: 30px solid black; /* Black top border */
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.close-btn {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 26px;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #e74c3c;
+}
+
+.modal h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal p {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #34495e;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+textarea {
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  resize: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #3498db;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
+}
+
+button:first-of-type {
+  background-color: #27ae60;
+  color: white;
+}
+
+button:first-of-type:hover {
+  background-color: #2ecc71;
+  transform: translateY(-2px);
+}
+
+button:last-of-type {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button:last-of-type:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Medical history list */
+.modal ul {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.modal ul li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.modal ul li::before {
+  content: '•';
+  color: #3498db;
+  padding-right: 8px;
+}
+
+/* Patient details table styling */
+.modal-content p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.modal-content p strong {
+  font-weight: bold;
+}
+
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.modal-content th,
+.modal-content td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-content th {
+  background-color: #f0f0f0;
+}
+
+.modal-content td {
+  color: #7f8c8d;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal {
+    width: 85%;
+    padding: 20px;
+  }
+
+  .modal h3 {
+    font-size: 22px;
+  }
+
+  .modal p {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  textarea {
+    font-size: 12px;
+  }
+}
+.history-btn {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px 0;
+  background-color: #0c83d2;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.history-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}

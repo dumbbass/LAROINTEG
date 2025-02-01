@@ -1,0 +1,61 @@
+<div class="background">
+  <!-- Animated Circles -->
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+  <div class="circle circle-3"></div>
+  <div class="circle circle-4"></div>
+  <div class="circle circle-5"></div>
+  <div class="circle circle-6"></div>
+  <div class="circle circle-7"></div>
+  <div class="circle circle-8"></div>
+
+  <!-- Main container with form -->
+  <div class="container">
+    <div class="right-side">
+      <img src="assets/Doctor.jpg" alt="Doctor" />
+      <img class="Logo" src="assets/Logo.png" alt="Logo" />
+      <p>Thank you for being a guiding light in health and Healing.</p>
+    </div>
+    <div class="left-side">
+      <div class="centered-headings">
+        <h1>Welcome to CarexusFlow</h1>
+        <h2>Login</h2>
+      </div>
+      <form class="login-form" (ngSubmit)="onLogin($event)">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="loginData.email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="loginData.password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+
+        <!-- Error message for empty fields or invalid credentials -->
+        <div *ngIf="loginError" class="error-message">
+          {{ errorMessage }}
+        </div>
+
+        <div class="button-container">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+      
+      <!-- Register button -->
+      <div class="register-container">
+        <a routerLink="/register">Register for Patients</a>  <!-- Styled as a link -->
+      </div>      
+    </div>
+  </div>
+</div>

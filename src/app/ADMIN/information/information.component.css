@@ -1,0 +1,111 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    height: 80px; /* Increased height of the header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container img {
+    max-width: 50px;
+}
+
+.logo-container h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    font-size: 28px;
+}
+
+
+/* Container Styling */
+/* Container Styling */
+.userprofile-container {
+    background-color: #fff;
+    padding: 20px; /* Space around the content */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centering the container with margin auto */
+    width: 70%; /* Set the width to 70% (adjust as needed) */
+    max-width: 900px; /* Optional: Set a max-width for larger screens */
+    margin-top: 120px;
+}
+/* Background Styling for <h2> */
+.userprofile-container h2 {
+    background-color:#f8f9fa; /* Set the background color */
+    color: rgb(0, 0, 0); /* Set the text color to white for contrast */
+    padding: 10px 20px; /* Add padding inside the header */
+    border-radius: 8px; /* Slightly round the corners */
+    margin: 0; /* Remove extra margin */
+    font-size: 20px; /* Adjust the font size if needed */
+    text-align: center; /* Center align the text (optional) */
+    margin-bottom: 30px;
+}
+
+
+
+/* Styling for the User Info */
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Space between rows */
+}
+
+.info-row div {
+    flex: 1;
+    margin-right: 10px; /* Space between columns */
+    padding: 10px; /* Inner padding for each column */
+}
+
+.info-row div:last-child {
+    margin-right: 0; /* Remove right margin for the last column */
+}
+
+/* Strong Tags: Light Grey Color, Lightweight Font, Spacing */
+strong {
+    color: #aaa; /* Light grey color */
+    font-weight: 300; /* Lightweight font */
+    font-size: 16px;
+    display: block; /* Makes the <strong> appear on a separate line */
+    margin-bottom: 5px; /* Adds spacing below <strong> */
+    margin-left: 20px; /* Moves the <strong> slightly to the right */
+}
+
+/* Paragraph Tags for User Data: Bold and Black Color */
+p {
+    margin: 0;
+    font-size: 16px;
+    color: #000; /* Black color */
+    font-weight: 700; /* Bold font weight */
+    margin-top: 5px; /* Space above the <p> */
+    margin-left: 20px; /* Moves the <p> slightly to the right */
+}
+
+/* Underline Styling */
+hr {
+    border: none;
+    border-top: 2px solid #ddd; /* Light grey underline */
+    margin: 20px 0; /* Space above and below the <hr> */
+}

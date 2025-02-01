@@ -1,0 +1,150 @@
+/* Sidebar styles */
+.sidenav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px; /* Sidebar width */
+    height: 100%;
+    background-color: #ffffff; /* Sidebar background color */
+    color: #0a0000; /* Sidebar text color */
+    padding: 20px;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Header */
+.sidenav-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sidenav-header .logo {
+    width: 40px;  /* Adjust size as necessary */
+    height: auto;
+    margin-right: 10px;
+}
+
+.sidenav-header h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #000000;
+    margin: 10px 0;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+
+/* Sidebar menu */
+.sidenav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* Sidebar menu item */
+.sidenav-item {
+    margin: 10px 0;
+    width: 100%;
+    text-align: left;
+    border: none; /* Remove border */
+    background-color: #ffffff;
+}
+
+/* Sidebar link */
+.sidenav-link {
+    color: #000000;
+    text-decoration: none;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    border: none; /* Ensure no borders */
+    background-color: #ffffff;
+}
+
+.sidenav-link i {
+    margin-right: 15px;
+}
+
+.sidenav-link:hover {
+    background-color: #0096FF;
+    color: black;
+}
+
+/* Logout section */
+.logout {
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.logout .sidenav-link {
+    font-size: 19px;
+}
+
+.logout .sidenav-link:hover {
+    background-color: #0096FF;
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-content button:last-child {
+    background-color: #dc3545;
+    color: white;
+}

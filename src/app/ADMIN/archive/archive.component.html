@@ -1,0 +1,73 @@
+<div class="dashboard-wrapper">
+  <app-adminsidenav></app-adminsidenav>
+  <div class="main-content">
+    <div class="archive-header-container">
+      <div class="header">
+        <div class="logo">
+          <i class="fas fa-archive"></i> Archive
+        </div>
+        <div class="search-container">
+          <input type="text" class="search-bar" placeholder="Search Archives" [(ngModel)]="searchQuery" (input)="onSearch()">
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="archive-list-container">
+      <h2>Archived Items</h2>
+      <table class="archive-table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Date Archived</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredItems">
+            <td>{{ item.id }}</td>
+            <td>{{ item.dateArchived }}</td>
+            <td>{{ item.firstname }} {{ item.lastname }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.remarks }}</td>
+            <td>
+              <div class="action-buttons">
+                <button class="view-btn" (click)="openViewModal(item)">View</button>
+                <button class="delete-btn" (click)="openDeleteModal(item)">Unarchive</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div *ngIf="showDeleteModal" class="modal-overlay" (click)="closeDeleteModal()"></div>
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeDeleteModal()">&times;</span>
+    <h3>Unarchive Confirmation</h3>
+    <p>Are you sure you want to unarchive {{ itemToDelete?.firstname }} {{ itemToDelete?.lastname }} from the archive list?</p>
+    <button (click)="confirmDelete()">Yes</button>
+    <button (click)="closeDeleteModal()">Cancel</button>
+  </div>  
+</div> 
+
+<!-- View User Modal -->
+<div *ngIf="showViewModal" class="modal-overlay" (click)="closeViewModal()"></div>
+<div *ngIf="showViewModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeViewModal()">&times;</span>
+    <h3>Patient Information</h3>
+    <p><strong>Name:</strong> {{ selectedItem?.firstname }} {{ selectedItem?.lastname }}</p>
+    <p><strong>Gender:</strong> {{ selectedItem?.gender }}</p>
+    <p><strong>Email:</strong> {{ selectedItem?.email }}</p>
+    <p><strong>Contact:</strong> {{ selectedItem?.contact_number }}</p>
+    <p><strong>Address:</strong> {{ selectedItem?.home_address }}</p>
+  </div>  
+</div>

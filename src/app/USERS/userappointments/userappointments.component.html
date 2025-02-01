@@ -1,0 +1,155 @@
+<div class="userbilling-container">
+    <app-sidenav></app-sidenav>
+    <div class="main-content">
+        <div class="userappointments-header-container">
+            <div class="header">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i> Appointments
+                </div>
+            </div>
+        </div>
+
+        <div class="patients-list-container">
+            <h2>Your Appointments</h2>
+            <table class="patients-table">
+                <thead>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Purpose of Appointment</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let appointment of appointments">
+                      <td>{{ appointment.doctor_firstname }} {{ appointment.doctor_lastname }}</td>
+                      <td>{{ appointment.appointment_date | date: 'fullDate' }}</td>
+                      <td>{{ appointment.appointment_time }}</td>
+                      <td>{{ appointment.purpose }}</td>
+                      <td>{{ appointment.status }}</td> 
+                      <td>
+                        <button *ngIf="appointment.remarks" 
+                                (click)="viewRemarks(appointment.remarks)"
+                                class="view-remarks-btn">
+                          View Remarks
+                        </button>
+                        <span *ngIf="!appointment.remarks">-</span>
+                      </td>
+                      <!-- <td>
+                          <button class="delete-btn" (click)="deleteAppointment(appointment.appointment_id)">
+                              Delete
+                          </button>
+                      </td> -->
+                  </tr>
+              </tbody>
+              
+            </table>
+        </div>
+
+
+<div class="bookappointment">
+<h2>Book Appointments</h2>
+
+<!-- Calendar -->
+
+<div class="appointment-purpose-container">
+  <label for="doctor-select">Choose Available Doctors</label>
+  <select 
+      id="doctor-select" 
+      class="appointment-purpose" 
+      [(ngModel)]="selectedDoctorId"
+      (change)="onDoctorSelect()">
+      <option *ngFor="let doctor of doctors" [value]="doctor.doctor_id">
+          {{ doctor.firstname }} {{ doctor.lastname }}
+      </option>
+  </select>
+</div>
+
+<div class="appointment-purpose-container">
+  <label for="appointment-purpose">Purpose of Appointment</label>
+  <select id="appointment-purpose" class="appointment-purpose" [(ngModel)]="appointmentPurpose">
+      <option value="checkup">Check-up</option>
+      <option value="consultation">Consultation</option>
+      <option value="emergency">Emergency</option>
+      <option value="followup">Follow-up</option>
+      <option value="vaccination">Vaccination</option>
+  </select>
+</div>
+
+<div class="calendar-box">
+  <h2>{{ currentMonth | date: 'MMMM yyyy' }}</h2>
+  <div class="calendar-navigation">
+    <button (click)="goToPreviousMonth()">&#8249;</button>
+    <button (click)="goToNextMonth()">&#8250;</button>
+  </div>
+
+  <div class="calendar-grid">
+  <div class="weekday" *ngFor="let day of weekDays">{{ day }}</div>
+  <div
+    class="day"
+    *ngFor="let day of daysInMonth"
+    [ngClass]="{
+        'selected': isSelectedDate(day),
+        'past-date': !isAvailableDate(day),
+        'booked-week': isDateInBookedWeek(day)
+    }"
+    (click)="isAvailableDate(day) && !isDateInBookedWeek(day) ? openModal(day) : null"
+  >
+    {{ day.getDate() }}
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeModal()">&times;</span>
+    <h2>Available Times for {{ modalDate | date: 'fullDate' }}</h2>
+    <div class="times-container">
+      <button
+        *ngFor="let slot of modalTimes"
+        (click)="selectTimeFromModal(slot)"
+        [ngClass]="{ 'selected': slot.time === selectedTime }"
+      >
+        {{ slot.time }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Appointment Summary -->
+<div *ngIf="selectedDate && selectedTime" class="appointment-summary">
+    <h3>Appointment Summary</h3>
+    <p>Doctor: {{ selectedDoctorId && doctors ? (doctors | doctorName:selectedDoctorId) : 'No doctor selected' }}</p>
+    <p>Purpose: {{ appointmentPurpose }}</p>
+    <p>Date: {{ selectedDate | date: 'fullDate' }}</p>
+    <p>Time: {{ selectedTime }}</p>
+    <button 
+        class="confirm-appointment-btn" 
+        (click)="confirmAppointment()"
+        [disabled]="!appointmentPurpose"
+    >
+        Confirm Appointment
+    </button>
+</div>
+
+</div>
+
+<!-- Add this remarks modal -->
+<div class="remarks-modal" *ngIf="remarksModalVisible">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Appointment Remarks</h3>
+            <button class="close-btn" (click)="closeRemarksModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>{{ currentRemarks }}</p>
+        </div>
+        <div class="modal-footer">
+            <button (click)="closeRemarksModal()">Close</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="dashboard-wrapper">
+  <app-adminsidenav></app-adminsidenav>
+  <div class="main-content">
+    <div class="admindashboard-header-container">
+      <div class="header">
+        <div class="logo">
+          <i class="fas fa-th-large"></i> Dashboard
+        </div>
+        <div class="search-container">
+          <input type="text" class="search-bar" placeholder="Search">
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="admindashboard-list-container">
+      <h2>Current Patients List in your Today's Queue</h2>
+      <table class="admindashboard-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>Male</td>
+            <td>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dashboard-reports-container">
+      <h2>Total Patient Growth</h2>
+      <div class="chart-container">
+        <canvas #medicalReportsChart></canvas>
+      </div>
+    
+      <h2>Total Appointments per Day</h2>
+      <div class="chart-container">
+        <canvas #appointmentsChart></canvas>
+      </div>
+    </div>
+    
+
+</div>

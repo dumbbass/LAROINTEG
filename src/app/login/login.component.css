@@ -1,0 +1,317 @@
+@keyframes float {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(20px, -20px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .background {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #007bff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  /* Circle styles */
+  .circle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.5; /* More visible circles */
+    z-index: 1; /* Place below the container */
+    animation: float 4s infinite ease-in-out; /* Faster animation */
+  }
+  
+  /* Container z-index */
+  .container {
+    position: relative;
+    display: flex;
+    width: 80%;
+    height: 85%;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #eaeaea;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensure it stays above circles */
+  }
+  
+  /* Circle positions and sizes */
+  .circle-1 {
+    width: 120px;
+    height: 120px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+  
+  .circle-2 {
+    width: 100px;
+    height: 100px;
+    top: 25%;
+    right: 5%;
+    animation-delay: 0.5s;
+  }
+  
+  .circle-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 1s;
+  }
+  
+  .circle-4 {
+    width: 150px;
+    height: 150px;
+    bottom: 10%;
+    right: 15%;
+    animation-delay: 1.5s;
+  }
+  
+  .circle-5 {
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: -5%; /* Slightly outside the container */
+    animation-delay: 2s;
+  }
+  
+  .circle-6 {
+    width: 90px;
+    height: 90px;
+    bottom: -10%; /* Slightly outside the container */
+    left: 40%;
+    animation-delay: 2.5s;
+  }
+  
+  .circle-7 {
+    width: 60px;
+    height: 60px;
+    top: -5%; /* Slightly outside the container */
+    right: 25%;
+    animation-delay: 3s;
+  }
+  
+  .circle-8 {
+    width: 110px;
+    height: 110px;
+    top: 35%;
+    left: 30%;
+    animation-delay: 3.5s;
+  }
+  
+  .left-side {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .centered-headings {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .centered-headings h1 {
+    margin-bottom: 20px;
+    font-size: 38px;
+  }
+  
+  .centered-headings h2 {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 30px;
+  }
+  
+  .centered-headings h3 {
+    margin: 15px 0;
+    font-weight: 400;
+    font-size: 24px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .login-form label {
+    font-size: 18px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .login-form input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 16px;
+  }
+  
+  .login-form input::placeholder {
+    color: #aaa;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px;
+    gap: 20px;
+  }
+  
+  .login-form button {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    width: 220px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .SignUp {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 18px;
+  }
+  
+  .signup-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+  
+  .right-side {
+    flex: 1;
+    position: relative;
+  }
+  
+  .right-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+  }
+  
+  .right-side .Logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+  }
+  
+  .right-side p {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1.2em; /* Increase font size */
+    color: #333; /* Darker text color for better contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for contrast */
+    padding: 10px; /* Add padding for spacing */
+    border-radius: 5px; /* Rounded corners for aesthetics */
+    margin: 0;
+    font-weight: 800;
+    width: 80%;
+  }
+  
+  .user-login-btn {
+    background-color: #28a745 !important; /* Green color for distinction */
+  }
+  
+  .user-login-btn:hover {
+    background-color: #218838 !important;
+  }
+  
+
+  .SignUp {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 18px;
+  }
+  
+  .signup-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style for the Register link container */
+.register-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Style for the Register link */
+.register-container a {
+  display: inline-block;           /* Makes it behave like a block-level element */
+  background: linear-gradient(135deg, #6e7dff, #56c9ff); /* Gradient background */
+  color: white;                    /* White text */
+  padding: 12px 25px;              /* Add padding for a larger button */
+  font-size: 18px;                 /* Larger text size */
+  text-decoration: none;           /* Removes underline */
+  border-radius: 50px;             /* Rounded corners */
+  cursor: pointer;                /* Change cursor on hover */
+  font-weight: bold;               /* Bold text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Subtle shadow */
+  transition: all 0.3s ease;       /* Smooth transition */
+}
+
+/* Hover effect for the link */
+.register-container a:hover {
+  background: linear-gradient(135deg, #56c9ff, #6e7dff);  /* Reversed gradient */
+  transform: translateY(-4px);       /* Slightly lift the link on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Active state (when the link is clicked) */
+.register-container a:active {
+  background: linear-gradient(135deg, #6e7dff, #56c9ff);  /* Default gradient on click */
+  transform: translateY(2px);        /* Slightly depress the link on click */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);  /* Reduce shadow on click */
+}
+
+
+.error-message {
+  color: red;
+  font-size: 15px;
+  margin-top: 10px;
+}

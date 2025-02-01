@@ -1,0 +1,253 @@
+.dashboard-container {
+    display: flex;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 240px; /* Adjust this value based on the width of the sidenav */
+}
+
+/* General styling for the containers */
+.dashboard-header-container {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-records-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    margin-right: 30px;
+    font-size: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Styling for Dashboard Containers */
+.dashboard-appointments-container,
+.dashboard-reports-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.dashboard-table th {
+    background-color: #f0f0f0;
+}
+
+.view-btn,
+.check-btn,
+.pending-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.view-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.check-btn {
+    background-color: #28a745;
+    color: white;
+}
+.pending-btn {
+    background-color: #e60000;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #0056b3;
+}
+
+.check-btn:hover {
+    background-color: #218838;
+}
+.pending-btn:hover {
+    background-color: #c60000;
+}
+/* Styling for the filter dropdown */
+.filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-container label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .filter-container select {
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .chart-container canvas {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .dashboard-appointments-container,
+  .dashboard-reports-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+  }
+  
+  .dashboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+  }
+  
+  .dashboard-table th,
+  .dashboard-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+  }
+  
+  .dashboard-table th {
+      background-color: #f0f0f0;
+  }
+  /* Styling for Background History Section */
+.background-history-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.background-history-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.background-history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.background-history-list li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.background-history-list strong {
+  color: #007bff;
+}
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  margin: 10px 0;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
+}
+.greeting-container {
+  margin-top: 10px; /* Adds spacing between the dashboard title and the greeting */
+  text-align: left; /* Align the text to the left */
+  font-size: 18px; /* Slightly larger font size for emphasis */
+  font-weight: 500; /* Medium weight for readability */
+}
+
+.greeting-container h2 {
+  color: #2a6fb1; /* Dark blue for the greeting text */
+}

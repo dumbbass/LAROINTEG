@@ -1,0 +1,136 @@
+<div class="dashboard-wrapper">
+  <app-adminsidenav></app-adminsidenav>
+  
+  <div class="main-content">
+    <div class="patient-header-container">
+      <div class="header">
+        <div class="logo">
+          <i class="fas fa-calendar-alt"></i> Schedule
+        </div>
+      </div>
+    </div>
+
+    <!-- Minimal content -->
+    <div class="schedule-container">
+      <div class="calendar-header">
+        <button (click)="prevMonth()" class="btn">&lt;</button>
+        <h2 class="calendar-title">{{ currentMonth$ | async | date: 'MMMM yyyy' }}</h2>
+        <button (click)="nextMonth()" class="btn">&gt;</button>
+        <button (click)="toggleBulkMode()" class="btn" [class.active]="isBulkMode">
+          {{ isBulkMode ? 'Cancel Bulk Mode' : 'Bulk Availability' }}
+        </button>
+      </div>
+
+      <table class="calendar-table">
+        <thead>
+          <tr>
+            <th *ngFor="let day of weekDays" class="calendar-day-header">{{ day }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let week of getWeeks()">
+            <td *ngFor="let day of week"
+                class="calendar-cell"
+                [class.selected]="isSelected(day)"
+                [class.today]="isToday(day)"
+                [class.has-availability]="hasAvailability(day)"
+                [class.bulk-selected]="isBulkMode && isSelected(day)"
+                [class.past-date]="isPastDate(day)"
+                (click)="!isPastDate(day) && selectDate(day)">
+              <div class="date-content">
+                {{ day.getDate() }}
+                <div *ngIf="hasAvailability(day)" class="availability-indicator">
+                  {{ getAvailabilityForDate(day).length }} slots
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="selected-dates">
+        <h3>Selected Dates:</h3>
+        <ul>
+          <li *ngFor="let date of selectedDates">
+            {{ date | date:'MMMM d, yyyy' }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="isBulkMode" class="bulk-availability-container">
+        <h3>Bulk Availability Setup</h3>
+        <div class="selected-count">
+          {{ selectedDates.length }} dates selected
+        </div>
+
+        <div class="time-input-container">
+          <input type="time" [(ngModel)]="newTime" class="time-input" />
+          <button class="btn add-time-btn" (click)="addBulkTime()" [disabled]="!newTime">
+            Add Time
+          </button>
+        </div>
+
+        <div *ngIf="bulkTimes.length > 0" class="bulk-times-list">
+          <h4>Selected Times:</h4>
+          <ul>
+            <li *ngFor="let time of bulkTimes">
+              <span class="time-display">{{ formatTime(time) }}</span>
+              <button class="btn remove-time-btn" (click)="removeBulkTime(time)">
+                <i class="fas fa-times"></i>
+              </button>
+            </li>
+          </ul>
+          <button class="btn save-btn" (click)="applyBulkAvailability()" [disabled]="isLoading">
+            {{ isLoading ? 'Saving...' : 'Apply to Selected Dates' }}
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+      </div>
+
+      <div *ngIf="successMessage" class="success-message">
+        <i class="fas fa-check-circle"></i> {{ successMessage }}
+      </div>
+    </div>
+
+    <div class="modal" *ngIf="isModalOpen">
+      <div class="modal-content">
+        <span class="close-btn" (click)="closeModal()">&times;</span>
+        <h2 class="modal-title">Set Available Times for {{ modalDate | date:'fullDate' }}</h2>
+
+        <div class="time-input-container">
+          <input type="time" [(ngModel)]="newTime" class="time-input" />
+          <button class="btn add-time-btn" (click)="addTime()">Add Time</button>
+        </div>
+
+        <div class="time-list">
+          <h3>Times:</h3>
+          <ul>
+            <li *ngFor="let time of modalTimes">
+              {{ formatTime(time) }}
+              <button class="btn remove-time-btn" (click)="removeTime(time)">Remove</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="preset-times">
+          <h3>Quick Add:</h3>
+          <div class="preset-buttons">
+            <button *ngFor="let time of presetTimes"
+                    class="btn preset-btn"
+                    (click)="addPresetTime(time)">
+              {{ formatTime(time) }}
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn save-btn" (click)="saveAvailability()">Save Availability</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

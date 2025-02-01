@@ -1,0 +1,119 @@
+<div class="dashboard-wrapper">
+  <app-adminsidenav></app-adminsidenav>
+  <div class="main-content">
+    <div class="patient-header-container">
+      <div class="header">
+        <div class="logo">
+          <i class="fas fa-user-injured"></i> Patients
+        </div>
+        <div class="search-container">
+          <input 
+            type="text" 
+            class="search-bar" 
+            placeholder="Search by name" 
+            [(ngModel)]="searchQuery" 
+            (input)="searchUsers()">
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="patients-list-container">
+      <h2>Patients List</h2>
+      <table class="patients-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUsers">
+            <td>{{ user.firstname }} {{ user.lastname }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button class="view-btn" (click)="viewUser(user)">View</button>
+              <button class="decline-btn" (click)="openArchiveModal(user)">Archive</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Patient Details Modal -->
+<div *ngIf="selectedUser">
+  <div class="modal-overlay" (click)="closeModal()"></div>
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <h3>{{ selectedUser.firstname }} {{ selectedUser.lastname }} Profile</h3>
+
+      <table class="patient-details-table">
+        <tr>
+          <th>Name:</th>
+          <td>{{ selectedUser.firstname }} {{ selectedUser.lastname }}</td>
+        </tr>
+        <tr>
+          <th>Gender:</th>
+          <td>{{ selectedUser.gender }}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{{ selectedUser.email }}</td>
+        </tr>
+        <tr>
+          <th>Contact:</th>
+          <td>{{ selectedUser.contact_number }}</td>
+        </tr>
+        <tr>
+          <th>Address:</th>
+          <td>{{ selectedUser.home_address }}</td>
+        </tr>
+        <tr>
+          <th>Birthplace:</th>
+          <td>{{ selectedUser.birthplace }}</td>
+        </tr>
+        <tr>
+          <th>Age:</th>
+          <td>{{ selectedUser.age }}</td>
+        </tr>
+        <tr>
+          <th>Nationality:</th>
+          <td>{{ selectedUser.nationality }}</td>
+        </tr>
+        <tr>
+          <th>Religion:</th>
+          <td>{{ selectedUser.religion }}</td>
+        </tr>
+        <tr>
+          <th>Civil Status:</th>
+          <td>{{ selectedUser.civil_status }}</td>
+        </tr>
+      </table>
+              <button class="history-btn">Patient History</button>
+    </div>
+  </div>
+</div>
+
+<!-- Move Archive Confirmation Modal outside of Patient Details Modal -->
+<div *ngIf="showArchiveModal" class="modal-overlay" (click)="closeArchiveModal()"></div>
+<div *ngIf="showArchiveModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeArchiveModal()">&times;</span>
+    <h3>Confirm Archive</h3>
+    <p>Are you sure you want to archive {{ userToArchive?.firstname }} {{ userToArchive?.lastname }}?</p>
+    <textarea [(ngModel)]="archiveRemarks" 
+              placeholder="Enter remarks here..." 
+              rows="3" 
+              style="width: 100%; margin-bottom: 10px;"
+              (input)="checkRemarks()"></textarea>
+    <p *ngIf="isRemarksTooLong" style="color: red; font-size: 12px;">Remarks should not exceed 30 words.</p>
+    <button [disabled]="isRemarksTooLong" (click)="confirmArchive()">Yes, Archive</button>
+    <button (click)="closeArchiveModal()">Cancel</button>
+  </div>
+</div>
